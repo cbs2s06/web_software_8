@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>「同鄉」Forum Fellowship Pulau Pinang</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'zh-TW',
+        includedLanguages: 'id,vi,tl,th,ms,ja,ko,hi,lo,my,km,en,zh-TW,zh-CN',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <style>
+    body {
+      background-color: #f7f7f7;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 36px;
+      margin: 0;
+    }
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .topic {
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .topic h2 {
+      font-size: 24px;
+      margin: 0 0 10px;
+    }
+    .topic p {
+      margin: 0;
+    }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .pagination button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+    .pagination button:hover {
+      background-color: #3e8e41;
+    }
+    .pagination button:first-child {
+      margin-left: 0;
+    }
+    .pagination button:last-child {
+      margin-right: 0;
+    }
+    .pagination button.disabled {
+      background-color: #ddd;
+      color: #aaa;
+      cursor: not-allowed;
+    }
+    .reply {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .reply h3 {
+      font-size: 20px;
+      margin: 0 0 10px;
+    }
+    .reply p {
+      margin: 0;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input[type="text"],
+    textarea {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+    }
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    button[type="submit"]:hover {
+      background-color: #3e8e41;
+    }
+    .back-to-home {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .back-to-home a {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .back-to-home a:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>台灣新住民新服務導航</h1>
+    <div id="google_translate_element"></div>
+  </header>
+  <main>
+    <div class="topic">
+      <h2>「同鄉」Forum Fellowship Pulau Pinang</h2>
+      <p>文章內容</p>
+    </div>
+    <div class="reply">
+      <h3>回覆文章</h3>
+      <form>
+        <label for="name">姓名</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">電子郵件</label>
+        <input type="email" id="email" name="email" required>
+        <label for="content">回覆內容</label>
+        <textarea id="content" name="content" required></textarea>
+        <button type="submit">發佈回覆</button>
+      </form>
+    </div>
+    <div class="reply">
+      <h3>回覆文章</h3>
+      <p>回覆內容</p>
+    </div>
+    <div class="reply">
+      <h3>回覆文章</h3>
+      <p>回覆內容</p>
+    </div>
+    <div class="reply">
+      <h3>回覆文章</h3>
+      <p>回覆內容</p>
+    </div>
+    <div class="reply">
+      <h3>回覆文章</h3>
+      <p>回覆內容</p>
+    </div>
+    <div class="reply">
+      <h3>回覆文章</h3>
+      <p>回覆內容</p>
+    </div>
+    <div class="back-to-home">
+      <a href="/">返回主頁</a>
+    </div>
+  </main>
+</body>
+</html>

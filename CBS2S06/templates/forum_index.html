@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>台灣新住民新服務導航</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'zh-TW',
+        includedLanguages: 'id,vi,tl,th,ms,ja,ko,hi,lo,my,km,en,zh-TW,zh-CN',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <style>
+    body {
+      background-color: #f7f7f7;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 36px;
+      margin: 0;
+    }
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .topic {
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .topic h2 {
+      font-size: 24px;
+      margin: 0 0 10px;
+    }
+    .topic p {
+      margin: 0;
+    }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .pagination button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+    .pagination button:hover {
+      background-color: #3e8e41;
+    }
+    .pagination button:first-child {
+      margin-left: 0;
+    }
+    .pagination button:last-child {
+      margin-right: 0;
+    }
+    .pagination button.disabled {
+      background-color: #ddd;
+      color: #aaa;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>台灣新住民新服務導航</h1>
+    <div id="google_translate_element"></div>
+  </header>
+  <main>
+    <h2>最新帖子</h2>
+    <div class="topic">
+      <h2><a href="'{{ url_for('forum_post1.html') }}">「同鄉」Forum Fellowship Pulau Pinang</a></h2>
+      <p>Selamat datang rakan-rakan kampung dari Penang, Malaysia untuk mengeksplorasi perasaan mereka untuk hidup di Taiwan bersama-sama……</p>
+    </div>
+    <div class="topic">
+      <h2><a href="{{ url_for('forum_post2.html') }}">「交友」台灣你好！</a></h2>
+      <p>大家好，我叫Das來自於印度阿鲁纳恰尔邦，我準備在台灣定居了……</p>
+    </div>
+    <div class="topic">
+      <h2><a href="{{ url_for('forum_post3.html') }}">「網站索引」新住民網址導航</a></h2>
+      <p>鏈接實時更新……</p>
+    </div>
+    <div class="topic">
+      <h2><a href="{{ url_for('forum_post4.html') }}">「服務合集」Layanan transportasi luar negeri yang disediakan khusus untuk penduduk baru</a></h2>
+      <p>本貼專門收集了支持多國語言的海外集運服務公司，方便新住民往家鄉寄件……</p>
+    </div>
+    <div class="topic">
+      <h2><a href="{{ url_for('forum_post5.html') }}">「社群」新住民服務組織的最新社群鏈接索引</a></h2>
+      <p>關注服務組織的社群鏈接，即可最快速，最方便地獲取新住民政策新動態……</p>
+    </div>
+    <div class="pagination">
+      <button class="disabled">&#10094; 上一頁</button>
+      <button class="disabled">1</button>
+      <button class="disabled">&#10095; 下一頁</button>
+    </div>
+  </main>
+</body>
+</html>
