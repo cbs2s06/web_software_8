@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>少數族裔健康保健關懷系統</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='LOGO.png') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div id="google_translate_element"></div>
+    <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'zh-TW', includedLanguages: 'zh-TW,zh-CN,en,ja,ko,th,vi,tl,ms,id,hi,my,km', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+    }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        h2 {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        form {
+            text-align: center;
+        }
+        
+        textarea {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            width: 80%;
+            max-width: 600px;
+            height: 100px;
+            box-sizing: border-box;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+        
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            width: 80%;
+            max-width: 600px;
+            box-sizing: border-box;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        select {
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 80%;
+            max-width: 600px;
+            box-sizing: border-box;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .language-selector {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .arrow-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .arrow-container span {
+            text-align: center;
+            display: block;
+            width: 100%;
+        }
+        
+        .arrow {
+            display: none;
+        }
+        
+        .note {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>少數族裔健康保健關懷系統</h1>
+    <h2>國語（繁體中文）醫學診斷詞語查詢</h2>
+    <form action="/chinese_to_language_health" method="POST">
+        <textarea name="inputText" placeholder="請在此輸入診斷書上不理解的中文詞匯（如有漢字輸入困難，可考慮使用手寫輸入法）；查詢語言默認為英語，請在左上角選擇語言，后鍵入文字：……" style="width: 80%; max-width: 600px;"></textarea>
+        <button type="submit" style="width: 80%; max-width: 600px;">獲取相關解釋</button>
+    </form>
+    <br>
+    <h2>病情自行描述與醫療建議系統</h2>
+    <form action="/description_health" method="POST">
+        <textarea name="inputText" placeholder="請輸入您目前的症狀（任何語言）。系統會自動檢測您輸入的語言來決定查詢語言，請在左上角選擇語言，后鍵入文字：……" style="width: 80%; max-width: 600px;"></textarea>
+        <button type="submit" style="width: 80%; max-width: 600px;">獲取參考建議</button>
+    </form><br>
+    <button type="submit" style="width: 80%; max-width: 600px;" onclick="window.location.href = '{{ url_for('index') }}'">返回網站主頁</button>
+    <p class="note"><b><span style="color: #FF0000;">請注意，我們的線上醫療建議系統無法完全取代與醫療專業人員的面對面諮詢。系統僅僅只是通過虛擬手段評估您的病情，這并非專業建議，可能存在局限性，結果僅供參考。如有必要，我們建議您前往醫療機構進行專業諮詢。</span></b></p>
+    <script>
+        document.querySelector('.arrow-container').addEventListener('click', function () {
+            document.querySelector('select').click();
+        });
+    </script>
+</body>
+</html>

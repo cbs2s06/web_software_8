@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>新住民教學通譯輔助系統</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='LOGO.png') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div id="google_translate_element"></div>
+    <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'zh-TW', includedLanguages: 'zh-TW,zh-CN,en,ja,ko,th,vi,tl,ms,id,hi,my,km', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+    }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        h3 {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        p {
+            font-size: 12px;
+            text-align: center;
+            margin: 5px 0;
+        }
+        
+        form {
+            text-align: center;
+        }
+        
+        textarea {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            width: 80%;
+            max-width: 600px;
+            height: 120px; 
+            box-sizing: border-box;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+        
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            width: 80%;
+            max-width: 600px;
+            box-sizing: border-box;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        select {
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 80%;
+            max-width: 600px; 
+            box-sizing: border-box;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .language-selector {
+            text-align: center; 
+            margin-bottom: 20px;
+        }
+        
+        .arrow-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .arrow-container span {
+            text-align: center;
+            display: block;
+            width: 100%;
+        }
+        
+        .arrow {
+            display: none;
+        }
+        
+        .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+        .popup {
+          background: #fff;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0,0,0,0.5);
+          text-align: left;
+          position: fixed; 
+          top: 5; 
+          left: 5; 
+          width: 85%; 
+          height: 85%; 
+        }
+        
+        .popup .content {
+          max-height: 666px;
+          overflow-y: auto;
+          margin-bottom: 20px;
+          max-width: none;
+        }
+        
+        .popup .content p {
+          font-size: 16px;
+          margin: 0;
+          padding: 10px;
+          border-bottom: 1px solid #ccc;
+        }
+        
+        .popup button {
+          background: #4CAF50;
+          color: #fff;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          position: absolute;
+          bottom: 10px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        
+        .note {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- 彈窗 -->
+    <div class="overlay">
+      <div class="popup">
+        <div class="content">
+        <p><b><span style="color: red;">在使用前請仔細閲讀下列説明</span></b></p>
+        <p>🇹🇼: 您可以在“使用教程”中重新打开本页面</p>
+        <p>🇬🇧 Englsih 英語： This page is in traditional Chinese by default. Please close this page and then select translation in the upper left corner. You can reopen the translated page in the “User Guide”.</p>
+        <p>🇮🇩 Bahasa Indonesia 印尼語： Halaman ini secara default dalam bahasa Tionghoa tradisional, silakan tutup halaman ini dan kemudian pilih terjemahan di sudut kiri atas. Anda dapat membuka kembali halaman yang telah diterjemahkan di “Panduan Penggunaan”.</p>
+        <p>🇻🇳 Tiếng Việt 越南語： Trang này mặc định là tiếng Trung phồn thể, vui lòng đóng trang này và sau đó chọn dịch ở góc trên bên trái. Bạn có thể mở lại trang đã dịch trong “Hướng dẫn sử dụng”.</p>
+        <p>🇵🇭 Wikang Filipino 菲律賓語： Ang pahinang ito ay naka-default sa tradisyonal na Tsino, mangyaring isara ang pahinang ito at pagkatapos ay pumili ng pagsasalin sa kaliwang itaas na sulok. Maaari mong muling buksan ang pahinang naisalin sa “Patnubay sa Paggamit”.</p>
+        <p>🇹🇭 ภาษาไทย 泰語： หน้านี้เป็นภาษาจีนดั้งเดิมโดยค่าเริ่มต้น โปรดปิดหน้านี้และเลือกการแปลภาษาที่มุมซ้ายบน คุณสามารถเปิดหน้าที่แปลแล้วใหม่ใน “คู่มือการใช้งาน”</p>
+        <p>🇲🇾 Bahasa Melayu 馬來語： Laman ini secara lalai dalam bahasa Cina tradisional, sila tutup laman ini dan kemudian pilih terjemahan di sudut kiri atas. Anda boleh membuka semula laman yang telah diterjemahkan dalam “Panduan Penggunaan”.</p>
+        <p>🇯🇵 日本語 日語： このページはデフォルトで繁体字中国語です。このページを閉じ、左上の角で翻訳を選択してください。 「使用チュートリアル」で翻訳後のこのページを再度開くことができます。</p>
+        <p>🇰🇷 한국어 韓語： 이 페이지는 기본적으로 번체 중국어로 설정되어 있습니다. 이 페이지를 닫고 왼쪽 상단에서 번역을 선택하십시오. "사용 설명서"에서 번역 된 이 페이지를 다시 열 수 있습니다.</p>
+        <p>🇮🇳 हिन्दी 印度語（官方語言：印地語）： यह पृष्ठ परंपरागत चीनी में डिफ़ॉल्ट रूप से है, कृपया इस पृष्ठ को बंद करें और बाएं ऊपर कोने में अनुवाद का चयन करें। आप “उपयोगकर्ता मार्गदर्शिका” में अनुवादित पृष्ठ को पुनः खोल सकते हैं।</p>
+        <p>🇱🇦 ພາສາລາວ 老撾語： ໜ້ານີ້ເປັນພາສາຈີນແບບເດີມໂດຍໃຊ້ເລີ່ມ ກະລຸນາປິດໜ້</p>
+        <p>🇲🇲 မြန်မာဘာသာ 緬甸語： ဤစာမျက်နှာသည် မူလအားဖြင့် တရုတ်ဘာသာ (၂) ၀ ၀ ၀ ၀ ၀ ၀ ၀ ၀ ၀ ၀ ။</p>
+        <p>🇰🇭 ភាសាខ្មែរ 柬埔寨語（高棉語）： ទំព័រនេះត្រូវបានកំណត់ជាលំនាំដើមជាភាសាចិនពេញនិយម សូមបិទទំព័រនេះ ហើយ​ ។ ។</p>
+        <p>此系統基於OpenAI的text-davinci-003模型，Microsoft的Bing API和服務學習小組創建的預訓練模型構建，能根據服務對象背景和收集到的新住民小學教學信息和語言生成人工智慧為通譯人員提供備課建議，解決部分知識點難以翻譯的問題。</p>
+        <p>目前支持的學科與功能：</p>
+        <p>【國語】以生動形象的語言翻譯和解釋課文（包括詩詞歌賦）</p>
+        <p>【數學】以易於理解的語言翻譯和解釋專業術語，或者為題目提供簡單明瞭的分析與思路</p>
+        <p>【英語】以準確詳細的語言翻譯英語字段，並生成系統推薦的單詞表和語法重點</p>
+        <p>【自然】以平實易懂的語言翻譯和解釋專業術語，並給出具體的案例促進學生理解</p>
+        <p>【社會】以中立客觀的語言翻譯和解釋專業術語，並注重學生與台灣社會的文化差異避免誤解與冒犯</p>
+        <p>【藝術】以優美雅致的語言翻譯和解釋專業術語，或者介紹並賞析一副藝術作品</p>
+        <p>【體育】以契合實際的語言翻譯和解釋專業術語，或者是介紹一種體育器材和它的使用方法</p>
+        <p>您只需要按照下列格式在文本框中鍵入：</p>
+        <p><b><span style="color: red;">學科名稱+（空格）+需要查詢的内容</sapn></b></p>
+        <p>例如：</p>
+        <p>國語 出師表</p>
+        <p>數學 正弦函數</p>
+        <p>英語 The New Southbound Policy is an initiative of the Government of 
+        Taiwan under President Tsai Ing-wen that aims to enhance cooperation and 
+        exchange between Taiwan and 18 countries in Southeast Asia, South Asia and Australasia.</p>
+        <p>自然 哺乳動物</p>
+        <p>社會 老齡化問題</p>
+        <p>藝術 梵高的星夜</p>
+        <p>體育 羽毛球</p>
+        <p>如果您忘記選擇語言則默認使用英語回答。因爲系統基於AI模型，如果您未按照格式輸入，系統也會猜測您的意圖給出備課建議。</p>
+        <button class="close">關閉</button>
+        </div>
+      </div>
+    </div>
+    <h1>新住民教學通譯輔助系統</h1>
+    <div class="language-selector">
+        <span>國語（繁體中文）</span>
+        <div class="arrow-container">
+            <div class="arrow">
+                <span></span>
+            </div>
+        </div>
+        <select name="language" onchange="location = this.value;">
+            <option value="" disabled selected hidden>🌐ພາສາລາວ 老撾語 </option>
+            <option value="translation_indonesia.html">Bahasa Indonesia 印尼語</option>
+            <option value="translation_vietnam.html">Tiếng Việt 越南語</option>
+            <option value="translation_philippines.html">Wikang Filipino 菲律賓語</option>
+            <option value="translation_thailand.html">ภาษาไทย 泰語</option>
+            <option value="translation_malaysia.html">Bahasa Melayu 馬來語</option>
+            <option value="translation_japan.html">日本語 日語</option>
+            <option value="translation_korea.html">한국어 韓語</option>
+            <option value="translation_india.html">हिन्दी 印度語（官方語言：印地語）</option>
+            <option value="translation_laos.html">ພາສາລາວ 老撾語</option>
+            <option value="translation_myanmar.html">မြန်မာဘာသာ 緬甸語</option>
+            <option value="translation_cambodia.html">ភាសាខ្មែរ 柬埔寨語（高棉語）</option>
+            <option value="translation_uk.html">Englsih 英語</option>
+        </select>
+    </div>
+    <form action="/convert_laos" method="POST">
+        <textarea name="inputText" placeholder="請先在文本框正上方的菜單選擇新住民需要使用的語言（不是谷歌翻譯服務的菜單），再輸入中文字符……" style="width: 80%; max-width: 600px;"></textarea>
+        <button type="submit" style="width: 80%; max-width: 600px;">獲取翻譯與備課建議</button>
+    </form>
+    <br></br>
+    <button type="button" class="tutorial-btn" style="background-color: #4CAF50; color: white; padding: 10px 20px; border-radius: 5px; border: none; cursor: pointer; font-size: 16px; width: 80%; max-width: 600px; box-sizing: border-box; display: block; margin: 0 auto;">使用教程</button>
+    <br></br>
+    <button type="submit" style="width: 80%; max-width: 600px;" onclick="window.location.href = '{{ url_for('index') }}'">返回主頁</button>
+    <br></br>
+    <p class="note"><b><span style="color: #4CAF50;">【友情提示】</span></b>本系統生成的結果僅供參考，請仔細審核檢查後再使用。</b></p>
+    <p class="note"><b><span style="color: #4CAF50;">【友情鏈接】</span></b>如果您遇到了輸入困難，您可以使用<b><a href="https://lens.google" target="_blank">Google Lens</a></b>掃描文檔獲取中文字符。或者您也可以使用手機相機中自帶的掃描功能（如有）。</p>
+    <p class="note"><b><span style="color: #4CAF50;">【友情鏈接】</span></b>如果您需要電子化學習資料，您可以嘗試訪問
+    <b><a href="https://data.gov.tw/" target="_blank">『台灣政府資料開放平臺』</a></b>、
+    <b><a href="https://945cloud.knsh.com.tw/index.asp" target="_blank">『康軒雲國教數位教學產品與服務』</a></b>、
+    <b><a href="https://hanlindigi.hle.com.tw/" target="_blank">『翰林數位』</a></b>、
+    <b><a href="https://www.mers.hk/resource/e_newsletter/2012_10_index.php" target="_blank">『現代教育電子教學』和</a></b>
+    <b><a href="https://taiwanlife.org" target="_blank">『台灣全民學習平臺』</a></b>
+    等平臺尋找在綫支持。</p>
+    <p class="note"><b><span style="color: #4CAF50;">【友情鏈接】</span></b>如果您需要更爲準確的新住民通譯服務，您可以考慮聯繫
+    <b><a href="https://idb.immigration.gov.tw/" target="_blank">『台灣通譯人員資料庫』</a></b>、
+    <b><a href="https://www.psbf.org.tw/index.php" target="_blank">『賽珍珠基金會婦女培力及服務』</a></b>、
+    <b><a href="https://www.immfa.org.tw/interpretationservice/" target="_blank">『新住民家庭成長協會通譯服務』</a></b>和
+    <b><a href="https://www.sfaa.gov.tw/SFAA/Pages/VDetail.aspx?nodeid=148&pid=667" target="_blank">『各直轄市、縣(市)新住民家庭服務中心一覽表』</a></b>
+    等網頁尋找專業人士幫助。</p>
+
+
+    <script>
+      var isPopupShown = false;
+    
+      document.querySelector('.arrow-container').addEventListener('click', function () {
+        document.querySelector('select').click();
+      });
+    
+      var overlay = document.querySelector('.overlay');
+      var popup = document.querySelector('.popup');
+      var closeBtn = document.querySelector('.close');
+      var tutorialBtn = document.querySelector('.tutorial-btn');
+    
+      tutorialBtn.addEventListener('click', function() {
+        if (!isPopupShown) {
+          overlay.style.display = 'flex';
+          isPopupShown = true;
+          console.log('isPopupShown:', isPopupShown);
+        }
+      });
+    
+      closeBtn.addEventListener('click', function() {
+        overlay.style.display = 'none';
+        isPopupShown = false;
+        console.log('isPopupShown:', isPopupShown);
+      });
+    </script>
+</body>
+</html>

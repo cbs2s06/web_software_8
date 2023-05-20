@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI「愛」在台灣新住民友誼之橋</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='LOGO.png') }}">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <style>
+    /* 全局樣式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      background-color: #f5f5f5;
+    }
+
+    /* 頁面樣式 */
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 10px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #logo {
+      max-width: 64px;
+      height: auto;
+    }
+
+    #google_translate_element {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .button {
+      display: flex;
+      flex-direction: column;
+      background-color: #4CAF50;
+      color: #ffffff;
+      font-size: 28px;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 20px 40px;
+      border-radius: 5px;
+      margin: 10px;
+      transition: all 0.3s ease-in-out;
+      align-items: center;
+    }
+
+    .button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 添加的樣式 */
+    .decorations {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+
+    .circle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background-color: #F5A623;
+      opacity: 0.3;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .circle:nth-child(1) {
+      top: 20%;
+      left: 15%;
+      width: 150px;
+      height: 150px;
+      opacity: 0.4;
+    }
+
+    .circle:nth-child(2) {
+      top: 60%;
+      left: 30%;
+      width: 120px;
+      height: 120px;
+      opacity: 0.5;
+    }
+
+    .circle:nth-child(3) {
+      top: 80%;
+      left: 70%;
+      width: 80px;
+      height: 80px;
+      opacity: 0.4;
+    }
+
+    .triangle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 50px 86.6px 50px;
+      border-color: transparent transparent #4CAF50 transparent;
+      opacity: 0.3;
+      transform: translate(-50%, -50%);
+    }
+
+    .triangle:nth-child(4) {
+      top: 40%;
+      left: 20%;
+      border-width: 0 80px 138.6px 80px;
+      opacity: 0.4;
+    }
+
+    .triangle:nth-child(5) {
+      top: 70%;
+      left: 70%;
+      border-width: 0 60px 103.9px 60px;
+      opacity: 0.5;
+    }
+
+    .triangle:nth-child(6) {
+      top: 90%;
+      left: 40%;
+      border-width: 0 40px 69.3px 40px;
+      opacity: 0.4;
+    }
+
+    .carousel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+
+    .carousel img {
+      width: 400px;
+      height: auto;
+      margin: 0 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .carousel img:hover {
+      transform:scale(1.1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .carousel .prev,
+    .carousel .next {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.5);
+      color: #4CAF50;
+      font-size: 32px;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin: 10px;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .carousel .prev:hover,
+    .carousel .next:hover {
+      background-color: #4CAF50;
+      color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 媒體查詢 */
+    @media screen and (max-width: 480px) {
+      h1 {
+        font-size: 24px;
+      }
+
+      .button {
+        font-size: 20px;
+        padding: 10px 20px;
+      }
+
+      .carousel img {
+        width: 200px;
+      }
+    }
+
+    /* 底部欄位樣式 */
+    footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff;
+      padding: 20px;
+      font-size: 14px;
+      color: #888888;
+      border-top: 1px solid #dddddd;
+    }
+
+    footer p {
+      margin: 0;
+    }
+  </style>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'zh-TW',
+        includedLanguages: 'id,vi,tl,th,ms,ja,ko,hi,lo,my,km,en,zh-TW,zh-CN',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+
+    $(document).ready(function() {
+      var currentIndex = 0;
+      var items = $('.carousel img');
+      var itemAmount = items.length;
+
+      function cycleItems() {
+        var item = $('.carousel img').eq(currentIndex);
+        items.hide();
+        item.css('display', 'block');
+      }
+
+      var autoSlide = setInterval(function() {
+        currentIndex += 1;
+        if (currentIndex > itemAmount - 1) {
+          currentIndex = 0;
+        }
+        cycleItems();
+      }, 5000);
+
+      $('.next').click(function() {
+        clearInterval(autoSlide);
+        currentIndex += 1;
+        if (currentIndex > itemAmount - 1) {
+          currentIndex = 0;
+        }
+        cycleItems();
+      });
+
+      $('.prev').click(function() {
+        clearInterval(autoSlide);
+        currentIndex -= 1;
+        if (currentIndex < 0) {
+          currentIndex = itemAmount - 1;
+        }
+        cycleItems();
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <header>
+    <img src="{{ url_for('static', filename='LOGO.png') }}" alt="LOGO" id="logo">
+    <h1> 「愛Ai」在台灣新住民友誼之橋</h1>
+  </header>
+  <main>
+    <div id="google_translate_element"></div>
+    <div class="carousel">
+      <a href="#" class="prev">&#10094;</a>
+      <img src="{{ url_for('static', filename='index1.jpg') }}" alt="Image 1">
+      <img src="{{ url_for('static', filename='index2.jpeg') }}" alt="Image 2">
+      <img src="{{ url_for('static', filename='index3.jpg') }}" alt="Image 3">
+      <a href="#" class="next">&#10095;</a>
+    </div>
+    <div class="buttons">
+    <a href="{{ url_for('translation_default') }}" class="button">點擊按鈕進入：<span class="button-text">人工智慧新住民愛心通譯服務</span></a><br></br>
+    <a href="{{ url_for('health') }}" class="button">點擊按鈕進入：<span class="button-text">智能系統新住民醫療問詢系統</span></a><br></br>
+    <a href="{{ url_for('forum') }}" class="button">點擊按鈕進入：<span class="button-text">資訊匯集新住民在綫索引論壇</span></a><br></br>
+    <a href="#" class="button">🤝🌏🧑‍🦰💼<span class="button-text">其他創新新住民服務正在開發</span></a><br></br>
+    </div>
+  </main>
+  <div class="decorations">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="triangle"></div>
+    <div class="triangle"></div>
+    <div class="triangle"></div>
+  </div>
+   <footer> <p>&copy; 香港理工大學服務學習CBS2S06第八小組</p> </footer>
+</body>
+
+</html>

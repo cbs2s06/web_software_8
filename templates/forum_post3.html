@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>「網站索引」新住民網址導航</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='LOGO.png') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'zh-TW',
+        includedLanguages: 'id,vi,tl,th,ms,ja,ko,hi,lo,my,km,en,zh-TW,zh-CN',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+    function showConfirmation() {
+      // show confirmation dialog box
+      var confirmed = confirm("网站索引由板塊由管理員管理，暫時不允許回復。如有不便，請咨詢：post.admin@cbs2s06.service.tw謝謝！");
+    
+      // if user confirms, allow form submission
+      if (confirmed) {
+        return true;
+      }
+    
+      // if user cancels, prevent form submission
+      else {
+        return false;
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #f7f7f7;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 36px;
+      margin: 0;
+    }
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .topic {
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .topic h2 {
+      font-size: 24px;
+      margin: 0 0 10px;
+    }
+    .topic p {
+      margin: 0;
+    }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .pagination button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+    .pagination button:hover {
+      background-color: #3e8e41;
+    }
+    .pagination button:first-child {
+      margin-left: 0;
+    }
+    .pagination button:last-child {
+      margin-right: 0;
+    }
+    .pagination button.disabled {
+      background-color: #ddd;
+      color: #aaa;
+      cursor: not-allowed;
+    }
+    .reply {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .reply h3 {
+      font-size: 20px;
+      margin: 0 0 10px;
+    }
+    .reply p {
+      margin: 0;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input[type="text"],
+    textarea {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+    }
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    button[type="submit"]:hover {
+      background-color: #3e8e41;
+    }
+    .back-to-home {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .back-to-home a {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .back-to-home a:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>台灣新住民新服務導航</h1>
+    <div id="google_translate_element"></div>
+  </header>
+  <main>
+    <div class="topic">
+      <h2>「網站索引」新住民網址導航</h2>
+      <p>鏈接實時更新……雖然許多新住民網站提供了豐富的資訊，但這些資訊往往分佈廣泛，且不易檢索。為了幫助新住民朋友們更快捷地找到所需信息，我們的管理員精心挑選了在各個功能領域中最具特色的網頁，並將它們匯集在這個網站中。只需輕按Ctrl+F，您就可以輕鬆進行站内搜索，快速找到您需要的信息</p>
+    </div>
+    <div class="reply">
+      <h3>回覆文章</h3>
+      <form onsubmit="return showConfirmation()">
+        <label for="name">姓名</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">電子郵件</label>
+        <input type="email" id="email" name="email" required>
+        <label for="content">回覆內容</label>
+        <textarea id="content" name="content" required></textarea>
+        <button type="submit">發佈回覆</button>
+      </form>
+    </div>
+    <div class="reply">
+      <h3><span style="color: #4CAF50;">管理員</span>112年新住民家庭服務中心一覽表 </h3>
+      <p><a href="https://data.gov.tw/dataset/160901">https://data.gov.tw/dataset/160901</a></p>
+      <p>這個網站來源於政府資料開放平臺。新住民家庭可在此獲得服務中心的地理位置信息。</p>
+    </div>
+    <div class="reply">
+      <h3><span style="color: #4CAF50;">管理员</span>“移民署-服務” </h3>
+      <p><a href="https://www.immigration.gov.tw/5385/5388/7181/7184/7193/">https://www.immigration.gov.tw/5385/5388/7181/7184/7193/
+</a></p>
+      <p>這個網頁提供了全臺内政部移民署的服務站鏈接，您可以通過在此找到距離您最近的新住民服務站辦理相關政務手續。</p>
+    </div>
+    <div class="reply">
+      <h3><span style="color: #4CAF50;">管理员</span>“新住民全球新聞網” </h3>
+      <p><a href="https://news.immigration.gov.tw/">https://news.immigration.gov.tw/</a></p>
+      <p>新住民全球新聞網是一個由移民署主辦的網站，提供中文、越南文、印尼文、泰文等多種語言的新聞資訊，主要內容包括新住民相關政策、活動、教育、文化等。新住民全球新聞網也有語言教學單元，以情境劇和雙向教學的方式，教新住民朋友學習中文，也教台灣觀眾學習其他語言。新住民全球新聞網的宗旨是促進多元文化交流，增進社會融合，提升新住民的生活品質加入此社群可以得到新住民家庭教育輔導及專業建議，幫助新住民家庭提高子女教育水平，並提供家庭及個人成長的支援。</p>
+    </div>
+    <div class="reply">
+      <h3><span style="color: #4CAF50;">管理员</span>“新住民數位資訊網” </h3>
+      <p><a href="https://nit.immigration.gov.tw/">https://nit.immigration.gov.tw/</a></p>
+      <p>「新住民數位資訊e網」是由內政部移民署建立的一個線上學習平台，提供新住民與子女有更好的學習環境，增進資訊素養、就業創業、文化傳承等能力。這個網站也會舉辦各種活動和獎勵，讓新住民可以互相交流和分享。</p>
+    </div>
+    <div class="reply">
+      <h3><span style="color: #4CAF50;">管理员</span>“社團法人新住民家庭成長協會” </h3>
+      <p><a href="https://www.immfa.org.tw/">https://www.immfa.org.tw/</a></p>
+      <p>社團法人新住民家庭成長協會致力於打造新住民友善社會。他們積極提供新住民諮詢輔導、培力課程、多國語能力運用、跨文化溝通理解。他們還提供新住民子女一對一中文學習、生活適應輔導、親師溝通、家庭問題協助等服務。</p>
+    </div>
+    <div class="reply">
+      <h3><span style="color: #4CAF50;">管理员</span>“財團法人台北市賽珍珠基金會” </h3>
+      <p><a href="http://psbf.org.tw/">http://psbf.org.tw/</a></p>
+      <p>賽珍珠基金會提供新住民諮詢輔導、培力課程、多國語能力運用、跨文化溝通理解等服務。該網站還提供了最新消息、活動信息和捐款方式。</p>
+    </div>
+    <div class="reply">
+      <h3><span style="color: #4CAF50;">管理员</span>“住民培力發展資訊網” </h3>
+      <p><a href="https://ifi.immigration.gov.tw/">https://ifi.immigration.gov.tw/</a></p>
+      <p>新住民培力發展資訊網旨在幫助新住民朋友們獲取政府各類資訊。您可以通過加入LINE來接收新住民福利及權益資訊。</p>
+    </div>
+    <div class="reply">
+      <h3><span style="color: #4CAF50;">管理员</span>“新住民子女教育網” </h3>
+      <p><a href="https://mkm.k12ea.gov.tw/">https://mkm.k12ea.gov.tw/</a></p>
+      <p>新住民子女教育網旨在整合新住民語文教育資源並予以系統化管理。全新響應式網頁，可搭配多元載具裝置瀏覽。該網站內容多元豐富，納入新住民語文教育相關計畫，例如：教學支援人員培訓、新民資源中心、樂學計畫、遠距教學、課綱資源、教材試教、教支職前、職場體驗、職業技能精進、跨國銜轉、教育實施、競賽活動及國際交流等。</p>
+    </div>
+    <div class="back-to-home">
+      <a href="/forum">返回主頁</a>
+    </div>
+  </main>
+</body>
+</html>

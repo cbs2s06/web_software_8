@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>「社群」新住民服務組織的最新社群鏈接索引</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='LOGO.png') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'zh-TW',
+        includedLanguages: 'id,vi,tl,th,ms,ja,ko,hi,lo,my,km,en,zh-TW,zh-CN',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+    function showConfirmation() {
+      // show confirmation dialog box
+      var confirmed = confirm("社群板塊由管理員管理，暫時不允許回復。如有不便，請咨詢：post.admin@cbs2s06.service.tw謝謝！");
+    
+      // if user confirms, allow form submission
+      if (confirmed) {
+        return true;
+      }
+    
+      // if user cancels, prevent form submission
+      else {
+        return false;
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #f7f7f7;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 36px;
+      margin: 0;
+    }
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .topic {
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .topic h2 {
+      font-size: 24px;
+      margin: 0 0 10px;
+    }
+    .topic p {
+      margin: 0;
+    }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .pagination button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+    .pagination button:hover {
+      background-color: #3e8e41;
+    }
+    .pagination button:first-child {
+      margin-left: 0;
+    }
+    .pagination button:last-child {
+      margin-right: 0;
+    }
+    .pagination button.disabled {
+      background-color: #ddd;
+      color: #aaa;
+      cursor: not-allowed;
+    }
+    .reply {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .reply h3 {
+      font-size: 20px;
+      margin: 0 0 10px;
+    }
+    .reply p {
+      margin: 0;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input[type="text"],
+    textarea {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+    }
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    button[type="submit"]:hover {
+      background-color: #3e8e41;
+    }
+    .back-to-home {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .back-to-home a {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .back-to-home a:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>台灣新住民新服務導航</h1>
+    <div id="google_translate_element"></div>
+  </header>
+  <main>
+    <div class="topic">
+      <h2>「社群」新住民服務組織的最新社群鏈接索引</h2>
+      <p><span style="color: #FF0000;">請注意，因爲網站開發人員身處大陸無法訪問海外網頁，且對Facebook/Line等台灣常見通訊軟體不熟悉，因此下面的鏈接僅僅是功能示範，不一定能正常訪問！本站提供的索引服務依舊正常，但是需要可靠的網址來源。歡迎各位網友給小編投稿正確的社群信息，我們會事實更新網頁，幫助新住民更及時地接觸到最新的訊息，找到溫馨的網絡大家庭！</span></p>
+    </div>
+    <div class="reply">
+      <h3>回覆文章</h3>
+      <form onsubmit="return showConfirmation()">
+        <label for="name">姓名</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">電子郵件</label>
+        <input type="email" id="email" name="email" required>
+        <label for="content">回覆內容</label>
+        <textarea id="content" name="content" required></textarea>
+        <button type="submit">發佈回覆</button>
+      </form>
+    </div>
+    <div class="reply">
+      <h3><span style="color: #4CAF50;">🔗已失效</span>“台灣新住民家庭關懷協會” </h3>
+      <p><a href="https://www.facebook.com/newimmigranthometaiwan/">https://www.facebook.com/newimmigranthometaiwan/</a></p>
+      <p>加入此社群可以獲得新住民相關資訊、法律諮詢、語言學習及生活技能訓練等，幫助新住民融入台灣社會。</p>
+    </div>
+    <div class="reply">
+      <h3><span style="color: #4CAF50;">🔗已失效</span>“新住民勞工權益促進和發展會” </h3>
+      <p><a href="https://www.facebook.com/immigrantworkertaiwan/">https://www.facebook.com/immigrantworkertaiwan/</a></p>
+      <p>加入此社群可以瞭解新住民勞工的權益，並得到相關法律諮詢和協助，讓新住民勞工能夠在工作場所中受到公正對待。</p>
+    </div>
+    <div class="reply">
+      <h3><span style="color: #4CAF50;">🔗已失效</span>“新住民家庭教育協會” </h3>
+      <p><a href="https://www.facebook.com/nafeataiwan11/">https://www.facebook.com/nafeataiwan11/</a></p>
+      <p>加入此社群可以得到新住民家庭教育輔導及專業建議，幫助新住民家庭提高子女教育水平，並提供家庭及個人成長的支援。</p>
+    </div>
+    <div class="reply">
+      <h3><span style="color: #4CAF50;">🔗已失效</span>“新住民婦女與兒童協會” </h3>
+      <p><a href="https://www.facebook.com/nima.nvtaiwan/">https://www.facebook.com/nima.nvtaiwan/</a></p>
+      <p>加入此社群可以獲得新住民婦女相關資訊、法律諮詢及心理輔導等，讓新住民婦女能夠更好地融入台灣社會，並獲得更多的支持和關注。</p>
+    </div>
+    <div class="reply">
+      <h3><span style="color: #4CAF50;">🔗已失效</span>“新住民移民人權關注協會” </h3>
+      <p><a href="https://www.facebook.com/taiwanmigrantsrights11/">https://www.facebook.com/taiwanmigrantsrights11/</a></p>
+      <p>加入此社群可以關注新住民移民人權，並得到相關法律諮詢和協助，支持和促進新住民移民的權益。</p>
+    </div>
+    <div class="reply">
+      <h3><span style="color: #4CAF50;">🔗已失效</span>“新住民文化交流協會” </h3>
+      <p><a href="https://www.facebook.com/nimaculturetaiwan/">https://www.facebook.com/nimaculturetaiwan/</a></p>
+      <p>加入此社群可以參加各種新住民文化交流活動，了解不同文化的多元性，促進新住民與台灣社會的融合與交流。</p>
+    </div>
+    <div class="reply">
+      <h3><span style="color: #4CAF50;">🔗已失效</span>“新住民創業協會” </h3>
+      <p><a href="https://www.facebook.com/newimmigrant.businesstaiwan/">https://www.facebook.com/newimmigrant.businesstaiwan/</a></p>
+      <p>加入此社群可以得到新住民創業相關資訊、專業輔導及資金扶助等，讓新住民創業者能夠更好地發展和壯大自己的事業。</p>
+    </div>
+    <div class="reply">
+      <h3><span style="color: #4CAF50;">🔗已失效</span>“新住民志工服務協會” </h3>
+      <p><a href="https://www.facebook.com/newimmigrantvolunteertaiwan/">https://www.facebook.com/newimmigrantvolunteertaiwan/</a></p>
+      <p>加入此社群可以參與各種新住民志工服務活動，為新住民社群提供力所能及的幫助，同時也增加自己的社會參與感和成就感。</p>
+    </div>
+    <div class="back-to-home">
+      <a href="/forum">返回主頁</a>
+    </div>
+  </main>
+</body>
+</html>
